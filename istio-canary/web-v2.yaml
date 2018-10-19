@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: web-v2
+  namespace: default
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: website
+        version: website-version-2
+    spec:
+      containers:
+      - name: website-version-2
+        image: kublr/kublr-tutorial-images:v2
+        resources:
+          requests:
+            cpu: 0.1
+            memory: 150
