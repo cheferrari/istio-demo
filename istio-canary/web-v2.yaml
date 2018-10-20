@@ -1,10 +1,14 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-v2
   namespace: default
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: website
+      version: website-version-2
   template:
     metadata:
       labels:
