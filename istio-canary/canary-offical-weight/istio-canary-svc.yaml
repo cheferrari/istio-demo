@@ -1,0 +1,65 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-v1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+      version: nginx-version-1
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: nginx
+        version: nginx-version-1
+        track: stable
+    spec:
+      containers:
+      - name: nginx-version-1
+        image: ferrariche/myweb:v1
+        #resources:
+         # requests:
+          #  cpu: 0.1
+           # memory: 100
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+      version: nginx-version-2
+      track: canary
+  template:
+    metadata:
+      labels:
+        app: nginx
+        version: nginx-version-2
+        track: canary
+    spec:
+      containers:
+      - name: nginx-version-2
+        image: ferrariche/myweb:v2
+        #resources:
+         # requests:
+          #  cpu: 0.1
+           # memory: 100
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    app: nginx
