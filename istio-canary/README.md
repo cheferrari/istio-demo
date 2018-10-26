@@ -1,5 +1,6 @@
 ## istio canary deployment demo
 ### istio 的金丝雀发布实现 是在同一个 Service 后面关联两个版本的 Deployment 来上实现分流（在k8s原生canary基础上进行功能扩展）
+k8s原生canary：https://github.com/cheferrari/k8s-demo/tree/master/canary-deployment
 ### 1、两种灰度策略（灰度发布有时也称金丝雀发布）
 策略类型分为“基于请求内容发布”和“基于流量比例发布”，通过页签选择确定。  
 灰度发布是将原有生产环境的默认版本的流量引流一部分到新版本中，以便进行测试版本是否有什么问题。
