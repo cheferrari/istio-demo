@@ -20,5 +20,5 @@ spec:
         image: kublr/kublr-tutorial-images:v2
         resources:
           requests:
-            cpu: 0.1
-            memory: 150
+            cpu: 20m
+            memory: 50Mi
