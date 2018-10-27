@@ -20,8 +20,8 @@ spec:
         image: kublr/kublr-tutorial-images:v1
         resources:
           requests:
-            cpu: 0.1
-            memory: 150
+            cpu: 20m
+            memory: 50Mi
 ---
 apiVersion: v1
 kind: Service
